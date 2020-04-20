@@ -3,7 +3,6 @@
 
       private $con;
       private $id;
-      //private $name;
       private $title;
       private $artistId;
       private $genre;
