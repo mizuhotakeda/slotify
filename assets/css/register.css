@@ -1,0 +1,149 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+#background {
+  background-color: #000;
+  background-image: url(../images/background.jpg);
+  background-position: center;
+  background-size:cover;
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+#loginContainer * { /* *(アスタリフト)はeverythingの意味 */
+  color: #fff;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; /*左から順にトライしダメなら右のフォントにずれる*/
+  font-weight: normal; /* フォントの太さ */
+  line-height: 1em; /* フォントサイズ 1em=12px */
+  box-sizing: border-box;
+}
+
+#loginContainer {
+  width: 80%;
+  margin: 0 auto; /* top&bottom left&right */
+  position: relative;
+  max-width: 1024px;
+}
+
+/* 以下、stackoverflowよりplaceholder color with CSS をコピペ */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #fff;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #fff;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #fff;
+}
+
+
+#inputContainer {
+  width: 400px;
+  padding: 45px; /*内側の空白*/
+  float: left;
+  border-right: 1px solid #999; /* サイズ、罫線のタイプ、カラー（グレー） */
+}
+
+#inputContainer h2 {
+  text-align: center;
+}
+
+#inputContainer input[type="text"],
+#inputContainer input[type="email"],
+#inputContainer input[type="password"] {
+  display: block;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  height: 27px;
+  line-height: 27px;
+  width: 100%;
+}
+
+#inputContainer label {
+  color: #a0a0a0;
+  font-size: 13px;
+  display: block;
+  margin-top: 15px;
+}
+
+#inputContainer button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 250px; /* 角の丸み調整（大きい値ほど丸い角） */
+  color: #fff;
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 20px auto; /* auto=中央配置 */
+  height: 41px;
+  width: 100%;
+}
+
+#inputContainer button:hover { /* 画面上のポインターを変化させる */
+  cursor: pointer;
+}
+
+.hasAccountText span {
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hasAccountText {
+  text-align: center;
+}
+
+#registerForm,
+#loginForm {
+  display: none;
+}
+
+#loginText {
+  padding: 45px;
+  display: table-cell;
+}
+
+#loginText h1 {
+  color: #028637; /* #07d159 -> 色変更 */
+  font-size: 60px;
+  font-weight: bold;
+}
+
+#loginText h2 {
+  margin: 35px;
+}
+
+#loginText ul {
+  padding: 0;
+}
+
+#loginText li {
+  font-size: 20px;
+  list-style-type: none;
+  padding: 5px 30px;
+  background: url(../images/icons/checkmark.png) no-repeat 0 0;
+}
+
+#inputContainer .errorMessage {
+  color: #028637;
+  font-size: 12px;
+  display: block;
+}
