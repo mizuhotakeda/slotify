@@ -15,7 +15,15 @@
 
 <script>
 
-    console.log(<?php echo $jsonArray; ?>);
+    $(document).ready(function() {
+        currentPlaylist = <?php echo $jsonArray; ?>;
+        audioElement = new Audio();
+        setTrack(currentPlaylist[0], currentPlaylist)
+    });
+
+    function setTrack(trackId, newPlaylist, Play) {
+
+    }
 
 </script>
 
