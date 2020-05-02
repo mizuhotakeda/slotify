@@ -18,11 +18,15 @@
     $(document).ready(function() {
         currentPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
-        setTrack(currentPlaylist[0], currentPlaylist)
+        setTrack(currentPlaylist[0], currentPlaylist, false);
     });
 
     function setTrack(trackId, newPlaylist, Play) {
+        audioElement.setTrack("assets/music/bensound-clearday.mp3");
 
+        if(play == true) {
+            audioElement.play(); //script.js内にfunction有り
+        }
     }
 
 </script>
