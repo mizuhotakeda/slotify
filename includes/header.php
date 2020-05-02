@@ -22,9 +22,18 @@
         <title>Welcome to Slotify!</title>
 
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <script src="assets/js/script.js"></script>
   </head>
 
   <body>
+
+    <script>
+      var audioElement = new Audio();
+      audioElement.setTrack("assets/music/acousticbreeze.mp3"); //test
+      audioElement.audio.play();
+    </script>
+
+
     <div id="mainContainer">
 
         <div id="topCpntainer">
