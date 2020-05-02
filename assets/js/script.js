@@ -13,4 +13,8 @@ function Audio() {
     this.play = function() {
         this.audio.play(); //Chrome policyによりauto playできない
     }
+
+    this.pause = function() {
+        this.audio.pause();
+    }
 }

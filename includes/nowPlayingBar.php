@@ -29,6 +29,18 @@
         }
     }
 
+    function playSong() {
+      $(".controlButton.play").hide()
+      $(".controlButton.pause").show() //JQuery
+      audioElement.play();
+    }
+
+    function pauseSong() {
+      $(".controlButton.play").show()
+      $(".controlButton.pause").hide()
+      audioElement.pause();
+    }
+
 </script>
 
 
@@ -63,10 +75,10 @@
                     <button class="controlButton previous" title="Previous button"> <!-- 前に -->
                         <img src="assets/images/icons/previous.png" alt="Previous">
                     </button>
-                    <button class="controlButton play" title="Play button"> <!-- 再生 -->
+                    <button class="controlButton play" title="Play button" onclick="playSong()"> <!-- 再生 -->
                         <img src="assets/images/icons/play.png" alt="Play">
                     </button>
-                    <button class="controlButton pause" title="Pause button" style="display: none;"> <!-- 一時停止 -->
+                    <button class="controlButton pause" title="Pause button" style="display: none;" onclick="pauseSong()"> <!-- 一時停止 -->
                         <img src="assets/images/icons/pause.png" alt="Pause">
                     </button>
                     <button class="controlButton next" title="Next button"> <!-- 次に -->
