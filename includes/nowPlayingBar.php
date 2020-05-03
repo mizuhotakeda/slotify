@@ -21,10 +21,15 @@
         setTrack(currentPlaylist[0], currentPlaylist, false);
     });
 
-    function setTrack(trackId, newPlaylist, Play) {
+    function setTrack(trackId, newPlaylist, play) {
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
-            console.log(data);
+
+            var track = JSON.parse(data); //convert into object
+
+            console.log(track);
+            audioElement.setTrack(track.path); //mysql内のテーブルデータと項目一致させること
+            audioElement.play();
         })
 
         if(play == true) {
