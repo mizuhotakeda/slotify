@@ -22,7 +22,10 @@
     });
 
     function setTrack(trackId, newPlaylist, Play) {
-        audioElement.setTrack("assets/music/bensound-clearday.mp3");
+
+        $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
+            console.log(data);
+        })
 
         if(play == true) {
             audioElement.play(); //script.js内にfunction有り
