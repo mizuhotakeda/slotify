@@ -33,6 +33,11 @@
                 $(".artistName span").text(artist.name); //artist name
             });
 
+            $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) { //album artwork
+                var album = JSON.parse(data);
+                $(".albumLink img").attr("src", album.artworkPath); //attr = attribute
+            });
+
             audioElement.setTrack(track.path); //mysql内のテーブルデータと項目一致させること
             audioElement.play();
         })
@@ -63,7 +68,7 @@
         <div id="nowPlayingLeft"> <!-- 下段左　-->
             <div class="content">
                 <span class="albumLink">
-                    <img class="albumArtwork" src="https://cdn.pixabay.com/photo/2017/08/09/12/38/vintage-2614408_960_720.jpg">
+                    <img class="albumArtwork" src="">
                 </span>　
                 <div class="trackInfo">
                     <span class="trackName">
