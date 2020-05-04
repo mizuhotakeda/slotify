@@ -25,7 +25,6 @@
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
             var track = JSON.parse(data); //convert into object
-
             $(".trackName span").text(track.title); //song title
 
             $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) { //Artist name
@@ -38,8 +37,8 @@
                 $(".albumLink img").attr("src", album.artworkPath); //attr = attribute
             });
 
-            audioElement.setTrack(track.path); //mysql内のテーブルデータと項目一致させること
-            audioElement.play();
+            audioElement.setTrack(track); //mysql内のテーブルデータと項目一致させること, track function in script.js
+            playSong();
         })
 
         if(play == true) {
@@ -48,6 +47,11 @@
     }
 
     function playSong() {
+
+      if(audioElement.audio.currentTime == 0) {
+          $.post("includes/handlers/ajax/updatePlays.php", { songId: audioElement.currentlyPlaying.id });
+      }
+
       $(".controlButton.play").hide()
       $(".controlButton.pause").show() //JQuery
       audioElement.play();

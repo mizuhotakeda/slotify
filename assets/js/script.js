@@ -6,8 +6,9 @@ function Audio() {
     this.currentlyPlaying;
     this.audio = document.createElement('audio'); // = php class
 
-    this.setTrack = function(src) { // = php public function
-        this.audio.src = src;
+    this.setTrack = function(track) { // = php public function, track instead of src
+        this.currentlyPlaying = track;
+        this.audio.src = track.path;
     }
 
     this.play = function() {

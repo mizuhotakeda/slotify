@@ -7,7 +7,7 @@
       private $artistId;
       private $genre;
       private $artworkPath;
-
+      
       public function __construct($con, $id) { //アーティストID
         $this->con = $con;
         $this->id = $id;
