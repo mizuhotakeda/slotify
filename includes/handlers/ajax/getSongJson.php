@@ -9,5 +9,4 @@
         echo json_encode($resultArray);
     }
 
-
 ?>

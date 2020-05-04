@@ -24,10 +24,15 @@
     function setTrack(trackId, newPlaylist, play) {
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
-
             var track = JSON.parse(data); //convert into object
 
-            console.log(track);
+            $(".trackName span").text(track.title); //song title
+
+            $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) { //Artist name
+                var artist = JSON.parse(data);
+                $(".artistName span").text(artist.name); //artist name
+            });
+
             audioElement.setTrack(track.path); //mysql内のテーブルデータと項目一致させること
             audioElement.play();
         })
@@ -62,10 +67,10 @@
                 </span>　
                 <div class="trackInfo">
                     <span class="trackName">
-                        <span>Happy Easter!</span>
+                        <span></span>
                     </span>
                     <span class="artistName">
-                        <span>Mizuho</span>
+                        <span></span>
                     </span>
                 </div>
 
