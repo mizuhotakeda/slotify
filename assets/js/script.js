@@ -20,6 +20,14 @@ function formatTime(seconds) {
     return minutes + ":" + extraZero + seconds;
 }
 
+function updateTimeProgressBar(audio) {
+    $(".progressTime.current").text(formatTime(audio.currentTime));
+    $(".progressTime.remaining").text(formatTime(audio.duration - audio.currentTime));
+
+    var progress = audio.currentTime / audio.duration * 100;
+    $(".playbackBar .progress").css("width", progress + "%");
+}
+
 
 function Audio() {
 
@@ -30,6 +38,12 @@ function Audio() {
         //'this' refers to the object that the event was called on
         var duration = formatTime(this.duration);
         $(".progressTime.remaining").text(duration);
+    });
+
+    this.audio.addEventListener("timeupdate", function() {
+        if(this.duration) {
+            updateTimeProgressBar(this);
+        }
     });
 
 
