@@ -29,6 +29,10 @@ function updateTimeProgressBar(audio) {
     $(".playbackBar .progress").css("width", progress + "%");
 }
 
+function updateVolumeProgressBar(audio) {
+    var volume = audio.volume * 100;
+    $(".volumeBar .progress").css("width", volume + "%");
+}
 
 function Audio() {
 
@@ -47,6 +51,9 @@ function Audio() {
         }
     });
 
+    this.audio.addEventListener("volumechange", function() {
+        updateVolumeProgressBar(this);
+    });
 
     this.setTrack = function(track) { // = php public function, track instead of src
         this.currentlyPlaying = track;
