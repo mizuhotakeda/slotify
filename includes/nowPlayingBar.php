@@ -75,6 +75,15 @@
         audioElement.setTime(seconds);
     }
 
+    function prevSong() {
+        if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
+            audioElement.setTime(0);
+        } else {
+            currentIndex = currentIndex - 1;
+            setTrack(currentPlaylist[currentIndex], currentPlaylist, true);
+        }
+    }
+
     function nextSong() {
         if(repeat == true) {
             audioElement.setTime(0);
@@ -174,7 +183,7 @@
                     <button class="controlButton shuffle" title="Shuffle button"> <!-- シャッフルボタン -->
                         <img src="assets/images/icons/shuffle.png" alt="Shuffle">
                     </button>
-                    <button class="controlButton previous" title="Previous button"> <!-- 前に -->
+                    <button class="controlButton previous" title="Previous button" onclick="prevSong()"> <!-- 前に -->
                         <img src="assets/images/icons/previous.png" alt="Previous">
                     </button>
                     <button class="controlButton play" title="Play button" onclick="playSong()"> <!-- 再生 -->
