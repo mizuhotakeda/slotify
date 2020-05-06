@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
   include("includes/config.php");
   include("includes/classes/Artist.php");
@@ -15,6 +14,7 @@
 
 ?>
 
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
   <head>
