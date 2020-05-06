@@ -92,6 +92,12 @@
         setTrack(trackToPlay, currentPlaylist, true);
     }
 
+    function setRepeat() {
+        repeat =! repeat;
+        var imageName = repeat ? "repeat-active.png" : "repeat.png";
+        $(".controlButton.repeat img").attr("src", "assets/images/icons/" + imageName);
+    }
+
     function setTrack(trackId, newPlaylist, play) {
         currentIndex = currentPlaylist.indexOf(trackId);
         pauseSong();
@@ -180,7 +186,7 @@
                     <button class="controlButton next" title="Next button" onclick="nextSong()"> <!-- 次に -->
                         <img src="assets/images/icons/next.png" alt="Next">
                     </button>
-                    <button class="controlButton repeat" title="Repeat button"> <!-- 繰り返し -->
+                    <button class="controlButton repeat" title="Repeat button" onclick="setRepeat()"> <!-- 繰り返し -->
                         <img src="assets/images/icons/repeat.png" alt="Repeat">
                     </button>
                 </div>
