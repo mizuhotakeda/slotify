@@ -76,6 +76,12 @@
     }
 
     function nextSong() {
+        if(repeat == true) {
+            audioElement.setTime(0);
+            playSong();
+            return;
+        }
+
         if(currentIndex == currentPlaylist.length - 1) {
             currentIndex = 0;
         } else {
@@ -87,10 +93,11 @@
     }
 
     function setTrack(trackId, newPlaylist, play) {
-
         currentIndex = currentPlaylist.indexOf(trackId);
+        pauseSong();
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
+
             var track = JSON.parse(data); //convert into object
             $(".trackName span").text(track.title); //song title
 
@@ -170,7 +177,7 @@
                     <button class="controlButton pause" title="Pause button" style="display: none;" onclick="pauseSong()"> <!-- 一時停止 -->
                         <img src="assets/images/icons/pause.png" alt="Pause">
                     </button>
-                    <button class="controlButton next" title="Next button"> <!-- 次に -->
+                    <button class="controlButton next" title="Next button" onclick="nextSong()"> <!-- 次に -->
                         <img src="assets/images/icons/next.png" alt="Next">
                     </button>
                     <button class="controlButton repeat" title="Repeat button"> <!-- 繰り返し -->
