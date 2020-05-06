@@ -21,7 +21,7 @@
         setTrack(currentPlaylist[0], currentPlaylist, false);
         updateVolumeProgressBar(audioElement.audio);
 
-        $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function() {
+        $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
             e.preventDefault();
         });
 
@@ -75,7 +75,20 @@
         audioElement.setTime(seconds);
     }
 
+    function nextSong() {
+        if(currentIndex == currentPlaylist.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++; //currentIndex + 1
+        }
+
+        var trackToPlay = currentPlaylist[currentIndex];
+        setTrack(trackToPlay, currentPlaylist, true);
+    }
+
     function setTrack(trackId, newPlaylist, play) {
+
+        currentIndex = currentPlaylist.indexOf(trackId);
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
             var track = JSON.parse(data); //convert into object
