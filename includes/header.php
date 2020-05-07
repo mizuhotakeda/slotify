@@ -8,6 +8,7 @@
 
   if(isset($_SESSION['userLoggedIn'])) { //ログイン成功の場合
     $userLoggedIn = $_SESSION['userLoggedIn'];
+    echo "<script>userLoggedIn = '$userLoggedIn';</script>";
   } else {
     header("Location: register.php"); //それ以外の場合、登録ページへリダイレクト
   }
