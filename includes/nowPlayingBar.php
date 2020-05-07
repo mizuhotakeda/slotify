@@ -16,9 +16,9 @@
 <script>
 
     $(document).ready(function() {
-        currentPlaylist = <?php echo $jsonArray; ?>;
+        var newPlaylist = <?php echo $jsonArray; ?>;
         audioElement = new Audio();
-        setTrack(currentPlaylist[0], currentPlaylist, false);
+        setTrack(newPlaylist[0], newPlaylist, false);
         updateVolumeProgressBar(audioElement.audio);
 
         $("#nowPlayingBarContainer").on("mousedown touchstart mousemove touchmove", function(e) {
@@ -97,7 +97,7 @@
             currentIndex++; //currentIndex + 1
         }
 
-        var trackToPlay = currentPlaylist[currentIndex];
+        var trackToPlay = shuffle ? shufflePlaylist[currentIndex] : currentPlaylist[currentIndex];
         setTrack(trackToPlay, currentPlaylist, true);
     }
 
@@ -121,9 +121,11 @@
         if(shuffle == true) {
             //Randomize playlist
             shuffleArray(shufflePlaylist);
+            currentIndex = shufflePlaylist.indexOf(audioElement.currentlyPlaying.id);
         } else {
             //Shuffle has been deactivated
             //Go back to regular playlist, regular order
+            currentIndex = currentPlaylist.indexOf(audioElement.currentlyPlaying.id);
         }
     }
 
@@ -145,7 +147,12 @@
             shuffleArray(shufflePlaylist);
         }
 
-        currentIndex = currentPlaylist.indexOf(trackId);
+        if(shuffle == true) {
+            currentIndex = shufflePlaylist.indexOf(trackId);
+        } else {
+            currentIndex = currentPlaylist.indexOf(trackId);
+        }
+
         pauseSong();
 
         $.post("includes/handlers/ajax/getSongJson.php", { songId: trackId }, function(data) { //ajax
