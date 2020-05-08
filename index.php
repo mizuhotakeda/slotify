@@ -13,12 +13,12 @@ include("includes/includedFiles.php");
             // '" "'（シングル・クォーテーション）（ダブル・クォーテーション）にすることで、前と後に分解する
             //（ドット） .  .内で呼び出すrowの定義
             echo "<div class='gridViewItem'>
-                      <a href='album.php?id=" . $row['id'] . "'>
+                      <span role='link' tabindex='0' onclick='openPage(\"album.php?id=" . $row['id'] . "\")'>
                           <img src='" . $row['artworkPath']. "'>
                           <div class='gridViewInfo'>"
                               . $row['title'] .
                           "</div>
-                      </a>
+                      </span>
                   </div>";
           }
        ?>
