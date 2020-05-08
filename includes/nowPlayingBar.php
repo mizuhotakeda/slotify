@@ -163,11 +163,14 @@
             $.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) { //Artist name
                 var artist = JSON.parse(data);
                 $(".artistName span").text(artist.name); //artist name
+                $(".artistName span").attr("onclick", "openPage('artist.php?id=" + artist.id + "')");
             });
 
             $.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) { //album artwork
                 var album = JSON.parse(data);
                 $(".albumLink img").attr("src", album.artworkPath); //attr = attribute
+                $(".albumLink img").attr("onclick", "openPage('album.php?id=" + album.id + "')");
+                $(".trackName span").attr("onclick", "openPage('album.php?id=" + album.id + "')");
             });
 
             audioElement.setTrack(track); //mysql内のテーブルデータと項目一致させること, track function in script.js
@@ -204,14 +207,14 @@
         <div id="nowPlayingLeft"> <!-- 下段左　-->
             <div class="content">
                 <span class="albumLink">
-                    <img class="albumArtwork" src="">
+                    <img role="link" tabindex="0" class="albumArtwork" src="">
                 </span>　
                 <div class="trackInfo">
                     <span class="trackName">
-                        <span></span>
+                        <span role="link" tabindex="0"></span>
                     </span>
                     <span class="artistName">
-                        <span></span>
+                        <span role="link" tabindex="0"></span>
                     </span>
                 </div>
 

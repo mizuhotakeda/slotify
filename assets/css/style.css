@@ -393,3 +393,7 @@ body {
 .gridViewContainer h2 {
   text-align: center;
 }
+
+[role="link"] {
+  cursor: pointer;
+}
