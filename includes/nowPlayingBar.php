@@ -171,12 +171,11 @@
             });
 
             audioElement.setTrack(track); //mysql内のテーブルデータと項目一致させること, track function in script.js
-            playSong();
-        })
 
-        if(play == true) {
-            audioElement.play(); //script.js内にfunction有り
-        }
+            if(play == true) {
+                playSong();
+            }
+        });
     }
 
     function playSong() {
