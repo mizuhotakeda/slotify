@@ -20,7 +20,6 @@
     $(".searchInput").focus();
 
     $(function() {
-        var timer;
         $(".searchInput").keyup(function() {
             clearTimeout(timer); //as soon as start typing the timer is canceled
             timer = setTimeout(function() {
