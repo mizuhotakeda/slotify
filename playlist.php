@@ -13,7 +13,9 @@
 
 <div class="entityInfo">
     <div class="leftSection">
-        <img src="assets/images/icons/playlist.png">
+        <div class="playlistImage">
+            <img src="assets/images/icons/playlist.png">
+        </div>
     </div>
 
     <div class="rightSection">
@@ -28,22 +30,22 @@
     <ul class="tracklist">
 
         <?php
-          $songIdArray = array();//$album->getSongIds();
+          $songIdArray = $playlist->getSongIds();
 
           $i = 1;
           foreach ($songIdArray as $songId) {
-              $albumSong = new Song($con, $songId);
-              $albumArtist = $albumSong->getArtist(); //アルバムアーティストと曲のアーティストが違う場合の為
+              $playlistSong = new Song($con, $songId);
+              $songArtist = $playlistSong->getArtist(); //アルバムアーティストと曲のアーティストが違う場合の為
 
               echo "<li class='tracklistRow'>
                       <div class='trackCount'>
-                          <img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
+                          <img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $playlistSong->getId() . "\", tempPlaylist, true)'>
                           <span class='trackNumber'>$i</span>
                       </div>
 
                       <div class='trackInfo'>
-                          <span class='trackName'>" . $albumSong->getTitle() . "</span>
-                          <span class='artistName'>" . $albumArtist->getName() . "</span>
+                          <span class='trackName'>" . $playlistSong->getTitle() . "</span>
+                          <span class='artistName'>" . $songArtist->getName() . "</span>
                       </div>
 
                       <div class='trackOptions'>
@@ -51,7 +53,7 @@
                       </div>
 
                       <div class='trackDuration'>
-                          <span class='duration'>" . $albumSong->getDuration() . "</span>
+                          <span class='duration'>" . $playlistSong->getDuration() . "</span>
                       </div>
                     </li>";
 
