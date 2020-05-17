@@ -64,7 +64,7 @@ function removeFromPlaylist(button, playlistId) {
             return;
         }
 
-        openPage("playlist.phpid=" + playlistId);
+        openPage("playlist.php?id=" + playlistId);
     });
 }
 
