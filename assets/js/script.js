@@ -21,6 +21,14 @@ $(window).scroll(function() {
     hideOptionsMenu();
 });
 
+$(document).on("change", "select.playlist", function() {
+    var playlistId = $(this).val();
+    var songId = $(this).prev(".songId").val();
+
+    console.log("playlistId: " + playlistId);
+    console.log("songId: " + songId);
+});
+
 function openPage(url) {
     if(timer != null) {
       clearTimeout(timer);
@@ -82,8 +90,10 @@ function hideOptionsMenu() {
 }
 
 function showOptionsMenu(button) {
+    var songId = $(button).prevAll(".songId").val();
     var menu = $(".optionsMenu");
     var menuWidth = menu.width();
+    menu.find(".songId").val(songId);
 
     var scrollTop = $(window).scrollTop(); //distance from top of the window to top of document
     var elementOffset = $(button).offset().top; //distance from the top of document
