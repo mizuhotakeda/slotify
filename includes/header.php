@@ -1,14 +1,17 @@
 <?php
   include("includes/config.php");
+  include("includes/classes/User.php"); //should be coded before Artist/Album/Songs.php
   include("includes/classes/Artist.php");
   include("includes/classes/Album.php"); //Artist.phpがAlbum.phpより前に来ないとバグる
   include("includes/classes/Song.php");
+  include("includes/classes/Playlist.php");
 
   //session_destroy();  マニュアルでログアウトしたい時　＊コメント化
 
   if(isset($_SESSION['userLoggedIn'])) { //ログイン成功の場合
-    $userLoggedIn = $_SESSION['userLoggedIn'];
-    echo "<script>userLoggedIn = '$userLoggedIn';</script>";
+    $userLoggedIn = new User($con, $_SESSION['userLoggedIn']);
+    $username = $userLoggedIn->getUsername();
+    echo "<script>userLoggedIn = '$username';</script>";
   } else {
     header("Location: register.php"); //それ以外の場合、登録ページへリダイレクト
   }
