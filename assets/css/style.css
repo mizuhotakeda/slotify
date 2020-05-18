@@ -487,3 +487,7 @@ input:focus {
   -webkit-appearance: none; /* deactivate dropdown arrows next to item */
   -moz-appearance: none; /* for Firefox */
 }
+
+.userInfo h1 {
+  text-align: center;
+}
