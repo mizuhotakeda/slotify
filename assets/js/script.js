@@ -115,6 +115,24 @@ function createPlaylist() {
     }
 }
 
+function renamePlaylist(playlistId) {
+    console.log(userLoggedIn);
+    var popup = prompt("Please rename your playlist");
+
+    if(popup != null) {
+        $.post("includes/handlers/ajax/renamePlaylist.php", { name: popup, playlistId: playlistId })
+        .done(function(error) {
+
+            if(error != "") {
+                alert(error);
+                return;
+            }
+
+            openPage("yourMusic.php");
+        });
+     }
+}
+
 function deletePlaylist(playlistId) {
     var prompt = confirm("Are you sure you want to delete this playlist?");
 
